@@ -35,11 +35,7 @@ const SearchBooks = () => {
     try {
        const bookSearch = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}`);
 
-      if (!bookSearch.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { items } = await response.json();
+      const { items } = await bookSearch.json();
 
       const bookData = items.map((book) => ({
         bookId: book.id,
